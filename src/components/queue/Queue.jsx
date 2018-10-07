@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from '../card/Card.jsx';
 
 class Queue extends Component {
 
