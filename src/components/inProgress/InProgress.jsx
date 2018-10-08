@@ -14,10 +14,13 @@ class InProgress extends Component {
 
   render() {
     return (
-      <div className="InProgress">
-        <header className="InProgress-header">
-          <h1 className="columnTitle">In Progress</h1>
-        </header>
+      <div className="componentColumn">
+        <div id="InProgress-header">
+          <h1 className="columnTitle" id="inProgressTitle">In Progress</h1>
+        </div>
+        <div className="CardComp">
+          {/* <Card /> */}
+        </div>
       </div>
     )
   }

@@ -13,20 +13,24 @@ class App extends Component {
   render() {
     return (
 
-
       <div className="App">
-        <header className="App-header">KANBAN
-          {/* <img src={logo} className="App-logo" alt="logo" />
+        <style>
+          @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Shadows+Into+Light|Unica+One');
+        </style>
 
-          <p>Edit <code>src/App.js</code> and save to reload.</p>
+        <header className="App-header">KANBAN</header>
 
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">Learn React</a> */}
-        </header>
+        <div id="Project-header">
+          <div id="projectTitle">Personal Life</div>
 
-        <Queue />
-        <InProgress />
-        <Done />
-        <Card />
+          <button id="newTask" type="button">+ NEW TASK</button>
+        </div>
+
+        <div className="Components">
+          <Queue />
+          <InProgress />
+          <Done />
+        </div>
       </div>
     );
   }

@@ -12,11 +12,16 @@ class Queue extends Component {
 
   render() {
     return (
-      <div className="Queue">
-        <header className="Queue-header">
-          <h1 className="columnTitle">Queue</h1>
-        </header>
+
+      <div className="componentColumn">
+        <div id="Queue-header">
+          <h1 className="columnTitle" id="queueTitle">Queue</h1>
+        </div>
+        <div className="CardComp">
+          {/* <Card /> */}
+        </div>
       </div>
+
     )
   }
 

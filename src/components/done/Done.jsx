@@ -13,10 +13,13 @@ class Done extends Component {
 
   render() {
     return (
-      <div className="Done">
-        <header className="Done-header">
-          <h1 className="columnTitle">Done</h1>
-        </header>
+      <div className="componentColumn">
+        <div id="Done-header">
+          <h1 className="columnTitle" id="doneTitle">Done</h1>
+        </div>
+        <div className="CardComp">
+          {/* <Card /> */}
+        </div>
       </div>
     )
   }
