@@ -77,7 +77,7 @@ class App extends Component {
 
         <div className="Components">
           <Queue />
-          {this.state.queueItems.map(item => <div>{queueItems.title} </div>)}
+          {/* {this.state.queueItems.map(item => <div>{queueItems.title} </div>)} */}
           <InProgress />
           <Done />
         </div>

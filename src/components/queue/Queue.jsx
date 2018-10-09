@@ -19,7 +19,10 @@ class Queue extends Component {
         </div>
 
         <div className="CardComp">
-          {/* <Card /> */}
+          <Card />
+        </div>
+        <div className="CardComp">
+          <Card />
         </div>
       </div>
 

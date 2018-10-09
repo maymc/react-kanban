@@ -61,23 +61,23 @@ button#newTask{
   width: 32%;
   height: 700px;
   margin: auto;
-  border: 1px black solid;
+  border: 1.5px black solid;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 10px 20px 50px grey;
 }
 
 #Queue-header, #InProgress-header, #Done-header{
   border: 1px solid black;
-  border-radius: 15px 15px 0 0;
+  border-radius: 10px 10px 0 0;
 }
 
 .columnTitle{
   margin: 0;
   text-align: center;
   font-family: 'Unica One', cursive;
-  font-size: 1.2em;
-  border-radius: 15px 15px 0 0;
+  font-size: 1.4em;
+  border-radius: 10px 10px 0 0;
 }
 
 #queueTitle{
@@ -93,5 +93,17 @@ button#newTask{
 }
 
 .CardComp{
-  border: 1px solid black;
+  margin: 10px;
+  border: 2px solid salmon;
+  border-radius: 3px;
+  background-color: rgb(255, 215, 210);
+}
+
+.cardInfo{
+  /* border: 1px solid black; */
+  padding: 5px 0 5px 20px;
+
+}
+.cardTitle, .cardBody, .cardPriority, .cardStatus, .cardCreatedBy, .cardAssignedTo{
+  margin: 0;
 }
