@@ -91,3 +91,7 @@ button#newTask{
 #doneTitle{
   background-color: mediumaquamarine;
 }
+
+.CardComp{
+  border: 1px solid black;
+}

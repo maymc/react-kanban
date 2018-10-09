@@ -17,6 +17,7 @@ class Queue extends Component {
         <div id="Queue-header">
           <h1 className="columnTitle" id="queueTitle">Queue</h1>
         </div>
+
         <div className="CardComp">
           {/* <Card /> */}
         </div>
