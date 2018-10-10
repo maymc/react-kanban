@@ -1,67 +1,90 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { getItemsFromFakeXHR, addItemToFakeXHR, deleteItemByIdFromFakeXHR } from './db/tasks.db.js';
 
 //Import JSX component files
 import Queue from './components/queue/Queue.jsx';
 import InProgress from './components/inProgress/InProgress.jsx';
 import Done from './components/done/Done.jsx';
-import Card from './components/card/Card.jsx';
+// import Card from './components/card/Card.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     //State is an object, items is an array of objects
+    //React handles state to do updates
     this.state = {
-      queueItems: [
+      tasks: [
         {
           id: 1,
           title: "Clean room",
           body: "Donate old clothes and books",
-          priority: "low",
+          priority: "Low",
           status: "Queue",
           createdBy: "Bob",
-          AssignedTo: "May"
-        }
-      ],
-      inProgressItems: [
+          assignedTo: "May"
+        },
         {
           id: 2,
           title: "Pay bills",
           body: "Credit card bills due this month",
-          priority: "high",
+          priority: "High",
           status: "In Progress",
           createdBy: "Bill",
-          AssignedTo: "Em"
+          assignedTo: "Em"
+        },
+        {
+          id: 3,
+          title: "Walk the dog",
+          body: "Twice a day",
+          priority: "Low",
+          status: "Done",
+          createdBy: "Sam",
+          assignedTo: "Sammy"
         },
         {
           id: 4,
           title: "Go to work",
           body: "Earn money, don't be homeless",
-          priority: "medium",
+          priority: "Medium",
           status: "In Progress",
           createdBy: "Paul",
-          AssignedTo: "May"
-        }
-      ],
-      doneItems: [
-        {
-          id: 3,
-          title: "Walk the dog",
-          body: "Twice a day",
-          priority: "low",
-          status: "Done",
-          createdBy: "Sam",
-          AssignedTo: "Sammy"
+          assignedTo: "May"
         },
       ]
+
+      // this.addTask = this.addTask.bind(this);
     }
   }
 
+  //Lifecycle Methods - mounting = setup resource, unmounting = remove/free resource
+  //Runs after the component output has been rendered to the DOM
+  componentDidMount() {
+    //execute something when component mounts
+    //do xhr request
+  }
+
+  componentWillUnmount() {
+
+  }
+
+  //Function to create a new task
+  addTask = () => {
+    //never mutate state directly, use this.setState to update the state, include what you want to update inside
+    console.log("Adding new task!");
+    // this.setState({
+    //   count: this.state.count - 1;
+    // })
+    // this.setState((state, props) => {
+    //   return {count: state.count -1}l
+    // })
+  }
+
+  //Render always returns HTML elements, it is like your template
   render() {
     return (
-
       <div className="App">
         <style>
           @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Shadows+Into+Light|Unica+One');
@@ -72,22 +95,18 @@ class App extends Component {
         <div id="Project-header">
           <div id="projectTitle">Personal Life</div>
 
-          <button id="newTask" type="button">+ NEW TASK</button>
+          <button id="newTask" type="button" onClick={this.addTask}>+ NEW TASK</button>
         </div>
 
         <div className="Components">
-          <Queue />
-          {/* {this.state.queueItems.map(item => <div>{queueItems.title} </div>)} */}
-          <InProgress />
-          <Done />
+          <Queue tasks={this.state.tasks} />
+          <InProgress tasks={this.state.tasks} />
+          <Done tasks={this.state.tasks} />
         </div>
 
       </div>
     )
   };
 }
-// function Queue(props) {
-//   return props.queueItems.map(queueItem => <div>{queueItem.title}</div>)
-// }
 
 export default App;

@@ -85,23 +85,33 @@ button#newTask{
 }
 
 #inProgressTitle{
-  background-color: powderblue;
+  background-color: rgb(132, 227, 240);
 }
 
 #doneTitle{
   background-color: mediumaquamarine;
 }
-
-.CardComp{
+.QueueCard{
   margin: 10px;
-  border: 2px solid salmon;
+  border: 2px solid lightcoral;
   border-radius: 3px;
-  background-color: rgb(255, 215, 210);
+  background-color: rgb(255, 221, 217);
+}
+.InProgCard{
+  margin: 10px;
+  border: 2px solid rgb(122, 210, 221);
+  border-radius: 3px;
+  background-color: rgb(208, 249, 255);
+}
+.DoneCard{
+  margin: 10px;
+  border: 2px solid mediumaquamarine;
+  border-radius: 3px;
+  background-color: rgb(214, 255, 241);
 }
 
 .cardInfo{
-  /* border: 1px solid black; */
-  padding: 5px 0 5px 20px;
+  padding: 5px 10px;
 
 }
 .cardTitle, .cardBody, .cardPriority, .cardStatus, .cardCreatedBy, .cardAssignedTo{
