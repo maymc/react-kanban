@@ -7,6 +7,7 @@ import { getItemsFromFakeXHR, addItemToFakeXHR, deleteItemByIdFromFakeXHR } from
 import Queue from './components/queue/Queue.jsx';
 import InProgress from './components/inProgress/InProgress.jsx';
 import Done from './components/done/Done.jsx';
+import TaskForm from './components/form/TaskForm.jsx';
 // import Card from './components/card/Card.jsx';
 
 class App extends Component {
@@ -98,7 +99,12 @@ class App extends Component {
     // this.setState((state, props) => {
     //   return {count: state.count -1}l
     // })
+    document.getElementById("taskForm").style.display = "block";
   }
+
+  // closeForm = () => {
+  //   document.getElementById("taskForm").style.display = "none";
+  // }
 
   //Render always returns HTML elements, it is like your template
   render() {
@@ -121,10 +127,14 @@ class App extends Component {
           <InProgress tasks={this.state.tasks} />
           <Done tasks={this.state.tasks} />
         </div>
+        <TaskForm />
 
       </div>
     )
   };
 }
+
+//Controlled form - let React maintain data of form b/c form elements in HTML has their own functionality behind the scenes. Browser engine handles the form however oyu declare it. Want to code it so that React component handles form data and stores the form data in the state.
+
 
 export default App;
