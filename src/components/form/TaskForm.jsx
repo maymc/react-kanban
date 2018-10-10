@@ -7,6 +7,7 @@ class TaskForm extends Component {
     this.states = {
       title: null,
       priority: null,
+      status: null,
       createdBy: null,
       assignedTo: null
     }
@@ -15,6 +16,7 @@ class TaskForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('\n Submitted!!:', this.state);
+    this.props.addTask(this.state);
   }
 
   handleChange = (e) => {
@@ -69,6 +71,14 @@ class TaskForm extends Component {
             <option value="Medium">Medium</option>
             <option value="High">High</option>
             <option value="Blocker">Blocker</option>
+          </select>
+        </label>
+        <br /><br />
+        <label>Status:
+          <select onChange={this.handleChange} name="status">
+            <option value="Queue">Queue</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Done">Done</option>
           </select>
         </label>
         <br /><br />

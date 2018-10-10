@@ -90,7 +90,7 @@ class App extends Component {
   }
 
   //Function to create a new task
-  addTask = () => {
+  addTask = (task) => {
     //never mutate state directly, use this.setState to update the state, include what you want to update inside
     console.log("Adding new task!");
     // this.setState({
@@ -99,12 +99,24 @@ class App extends Component {
     // this.setState((state, props) => {
     //   return {count: state.count -1}l
     // })
-    document.getElementById("taskForm").style.display = "block";
+    // document.getElementById("taskForm").style.display = "block";
+
+    this.setState(state => {
+
+      //create new task
+      //returning new state. creating a whole new object and creating a new state. You have a tasks field and array, takes everything from old task array and adds one more task
+      return { tasks: [...state.tasks, task] }
+    })
+
   }
 
   // closeForm = () => {
   //   document.getElementById("taskForm").style.display = "none";
   // }
+
+
+
+
 
   //Render always returns HTML elements, it is like your template
   render() {
@@ -127,7 +139,7 @@ class App extends Component {
           <InProgress tasks={this.state.tasks} />
           <Done tasks={this.state.tasks} />
         </div>
-        <TaskForm />
+        <TaskForm addTask={this.addTask} />
 
       </div>
     )
