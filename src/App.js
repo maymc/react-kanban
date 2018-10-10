@@ -53,6 +53,24 @@ class App extends Component {
           createdBy: "Paul",
           assignedTo: "May"
         },
+        {
+          id: 5,
+          title: "Schedule dentist appointment",
+          body: "Annual cleaning",
+          priority: "Medium",
+          status: "Queue",
+          createdBy: "George",
+          assignedTo: "May"
+        },
+        {
+          id: 6,
+          title: "Feed the dog",
+          body: "k9 brand",
+          priority: "Medium",
+          status: "Queue",
+          createdBy: "Bob",
+          assignedTo: "Bob"
+        },
       ]
 
       // this.addTask = this.addTask.bind(this);
@@ -87,8 +105,8 @@ class App extends Component {
     return (
       <div className="App">
         <style>
-          @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Shadows+Into+Light|Unica+One');
-          </style>
+          @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Oxygen|Shadows+Into+Light|Unica+One');
+        </style>
 
         <header className="App-header">KANBAN</header>
 

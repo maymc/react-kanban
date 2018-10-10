@@ -38,12 +38,12 @@ background-color: white;;
 
 button#newTask{
   flex: 0 0 auto;
-  width: 100px;
+  width: 120px;
   margin: auto 0;
   height: 30px;
   margin-right: 30px;
   font-family: 'Unica One', cursive;
-  font-size: 1em;
+  font-size: 1.2em;
 
 }
   
@@ -54,7 +54,6 @@ button#newTask{
   flex-flow: row nowrap;
   margin: 10px 0;
   background-color: white;
-
 }
 
 .componentColumn{
@@ -91,18 +90,22 @@ button#newTask{
 #doneTitle{
   background-color: mediumaquamarine;
 }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .QueueCard{
   margin: 10px;
   border: 2px solid lightcoral;
   border-radius: 3px;
   background-color: rgb(255, 221, 217);
 }
+
 .InProgCard{
   margin: 10px;
   border: 2px solid rgb(122, 210, 221);
   border-radius: 3px;
   background-color: rgb(208, 249, 255);
 }
+
 .DoneCard{
   margin: 10px;
   border: 2px solid mediumaquamarine;
@@ -114,6 +117,26 @@ button#newTask{
   padding: 5px 10px;
 
 }
-.cardTitle, .cardBody, .cardPriority, .cardStatus, .cardCreatedBy, .cardAssignedTo{
+.cardTitle {
   margin: 0;
+  font-family: 'Oxygen', sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.cardBody {
+  margin: 0;
+  font-family: 'Oxygen', sans-serif;
+  font-style: italic;
+}
+
+.cardPriority, .cardStatus, .cardCreatedBy{
+  margin: 0;
+  font-family: 'Oxygen', sans-serif;
+}
+
+.cardAssignedTo{
+  margin: 0;
+  font-family: 'Oxygen', sans-serif;
+  text-align: right;
 }
