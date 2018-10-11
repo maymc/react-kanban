@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { getItemsFromFakeXHR, addItemToFakeXHR, deleteItemByIdFromFakeXHR } from './db/tasks.db.js';
 
@@ -14,7 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    //State is an object, items is an array of objects
+    //State is an object, tasks is an array of objects
     //React handles state to do updates
     this.state = {
       tasks: [
@@ -78,45 +77,32 @@ class App extends Component {
     }
   }
 
-  //Lifecycle Methods - mounting = setup resource, unmounting = remove/free resource
-  //Runs after the component output has been rendered to the DOM
+  //~~~~~~ Lifecycle Methods ~~~~~~~~//
+
+  //Mounting = setup resource
+  //Unmounting = remove/free resource
+
+  //Runs after the component output has been rendered to DOM
   componentDidMount() {
     //execute something when component mounts
     //do xhr request
   }
 
-  componentWillUnmount() {
-
-  }
+  //~~~~~~ App Component - Functions ~~~~~~~~//
+  //Never mutate 'state' directly, use 'this.setState' to update the 'state', include what you want to update inside
 
   //Function to create a new task
   addTask = (task) => {
-    //never mutate state directly, use this.setState to update the state, include what you want to update inside
     console.log("Adding new task!");
-    // this.setState({
-    //   count: this.state.count - 1;
-    // })
-    // this.setState((state, props) => {
-    //   return {count: state.count -1}l
-    // })
-    // document.getElementById("taskForm").style.display = "block";
 
+    //Creates new task, returns a new state
+    //Creates a whole new object and creats a new state 
     this.setState(state => {
-
-      //create new task
-      //returning new state. creating a whole new object and creating a new state. You have a tasks field and array, takes everything from old task array and adds one more task
+      //You have a tasks field and array, takes everything from old task array and adds one more task
       return { tasks: [...state.tasks, task] }
     })
 
   }
-
-  // closeForm = () => {
-  //   document.getElementById("taskForm").style.display = "none";
-  // }
-
-
-
-
 
   //Render always returns HTML elements, it is like your template
   render() {
@@ -146,7 +132,10 @@ class App extends Component {
   };
 }
 
-//Controlled form - let React maintain data of form b/c form elements in HTML has their own functionality behind the scenes. Browser engine handles the form however oyu declare it. Want to code it so that React component handles form data and stores the form data in the state.
-
-
 export default App;
+
+
+
+
+
+//Controlled form - let React maintain data of form b/c form elements in HTML has their own functionality behind the scenes. Browser engine handles the form however you declare it. Want to code it so that React component handles form data and stores the form data in the state.

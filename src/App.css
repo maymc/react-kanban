@@ -11,13 +11,14 @@ background-color: white;;
 .App-header {
   display: flex;
   min-height: 5vh;
-  background-color: white;
-  color: black;
+  background-color: rgb(91, 135, 172);
+  color: white;
   font-size: 2em;
   font-family: 'Shadows Into Light', cursive;
-  /* justify-content: center; */
-  padding-left: 30px;
+  justify-content: center;
+  /* padding-left: 30px; */
   border-bottom: 2px solid black;
+  /* text-align: center; */
 }
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 #Project-header{
