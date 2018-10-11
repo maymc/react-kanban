@@ -42,7 +42,7 @@ class Queue extends Component {
 
 function Card(props) {
   return props.tasks.map(task =>
-    <div className="QueueCard">
+    <div key={task.id} className="QueueCard">
       <div className="cardInfo">
         {/* <header className="Card-header">
           <h1 className="columnTitle">Task</h1>

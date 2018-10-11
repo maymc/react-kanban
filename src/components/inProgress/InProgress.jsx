@@ -41,7 +41,7 @@ class InProgress extends Component {
 
 function Card(props) {
   return props.tasks.map(task =>
-    <div className="InProgCard">
+    <div key={task.id} className="InProgCard">
       <div className="cardInfo">
         {/* <header className="Card-header">
           <h1 className="columnTitle">Task</h1>

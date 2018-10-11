@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+// eslint-disable-next-line
 import { getItemsFromFakeXHR, addItemToFakeXHR, deleteItemByIdFromFakeXHR } from './db/tasks.db.js';
 
 //Import JSX component files

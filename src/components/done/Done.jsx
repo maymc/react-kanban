@@ -41,7 +41,7 @@ class Done extends Component {
 
 function Card(props) {
   return props.tasks.map(task =>
-    <div className="DoneCard">
+    <div key={task.id} className="DoneCard">
       <div className="cardInfo">
         {/* <header className="Card-header">
           <h1 className="columnTitle">Task</h1>
