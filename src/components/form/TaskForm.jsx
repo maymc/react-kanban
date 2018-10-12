@@ -90,7 +90,7 @@ class TaskForm extends Component {
           <input onChange={this.handleChange} type="text" name="assignedTo" />
         </label>
 
-        <button type="submit" class="btn">Submit</button>
+        <button type="submit" className="btn">Submit</button>
         {/* <button type="button" class="btn cancel" onclick="closeForm()">Close</button> */}
       </form>
       // </div>
