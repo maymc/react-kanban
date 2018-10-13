@@ -61,12 +61,13 @@ class TaskForm extends Component {
       // <div class="form-popup" id="taskForm">
       // <form action="/action_page.php" class="form-container">
       <form onSubmit={this.handleSubmit}>
-        <label>Title:
-          <input onChange={this.handleChange} type="text" name="title" />
+        <label>Title:<br />
+          <input onChange={this.handleChange} type="text" name="title" placeholder="Enter title..." />
         </label>
         <br /><br />
-        <label>Priority:
+        <label>Priority:<br />
           <select onChange={this.handleChange} name="priority">
+            <option>Select Priority...</option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
@@ -74,20 +75,21 @@ class TaskForm extends Component {
           </select>
         </label>
         <br /><br />
-        <label>Status:
+        <label>Status:<br />
           <select onChange={this.handleChange} name="status">
+            <option>Select Status...</option>
             <option value="Queue">Queue</option>
             <option value="In Progress">In Progress</option>
             <option value="Done">Done</option>
           </select>
         </label>
         <br /><br />
-        <label>Created By:
-          <input onChange={this.handleChange} type="text" name="createdBy" />
+        <label>Created By:<br />
+          <input onChange={this.handleChange} type="text" name="createdBy" placeholder="Enter Creator..." />
         </label>
         <br /><br />
-        <label>Assigned To:
-          <input onChange={this.handleChange} type="text" name="assignedTo" />
+        <label>Assigned To:<br />
+          <input onChange={this.handleChange} type="text" name="assignedTo" placeholder="Assign task to someone..." />
         </label>
 
         <button type="submit" className="btn">Submit</button>

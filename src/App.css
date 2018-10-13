@@ -136,6 +136,58 @@ button#newTask, button#homeBtn, button#BoardsBtn{
   text-align: right;
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+form {
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 15px;
+  font-family: 'Oxygen', sans-serif;
+  width: 50%;
+  font-weight: bold;
+}
+
+input[type=text], select {
+  margin: 8px 0;
+  padding: 12px 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  box-sizing: border-box;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1em;
+}
+
+button[type=submit] {
+  width: 100%;
+  background-color: rgb(46, 206, 255);
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Oxygen', sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+button:hover{
+  background-color: rgb(80, 176, 231);
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+#welcomeMsg{
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Shadows Into Light', cursive;
+  height: 100%;
+  margin: auto 0;
+}
 
 
 

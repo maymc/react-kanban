@@ -122,7 +122,13 @@ export default App;
 function Home(props) {
   console.log("Home props:", props);
   console.log("Home component goes here");
-  return <div>This is HOMEEEEE</div>
+  return (
+    <div id="Home-header">
+      <div id="welcomeMsg">Welcome to your Kanban!</div>
+
+    </div>
+
+  )
 }
 
 
