@@ -12,7 +12,7 @@ class Card extends Component {
     console.log("\nCard component props:", this.props.tasks);
 
     return (
-      <div className="Card">
+      <div key={this.props.tasks.id} className="Card">
         <div className="cardInfo">
           <header className="Card-header">
             <h1 className="columnTitle">Card</h1>

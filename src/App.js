@@ -8,6 +8,7 @@ import Queue from './components/queue/Queue.jsx';
 import InProgress from './components/inProgress/InProgress.jsx';
 import Done from './components/done/Done.jsx';
 import TaskForm from './components/form/TaskForm.jsx';
+import Boards from './components/boards/Boards.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -98,10 +99,10 @@ class App extends Component {
 
   //Function to create a new task
   addTask = (task) => {
-    console.log("Adding new task!");
+    console.log("Adding new task!", task);
 
     //Creates new task, returns a new state
-    //Creates a whole new object and creats a new state 
+    //Creates a whole new object and creates a new state 
     this.setState(state => {
       //You have a tasks field and array, takes everything from old task array and adds one more task
       return { tasks: [...state.tasks, task] }
@@ -130,38 +131,47 @@ class App extends Component {
 
         {/* Header */}
         <header className="App-header">KANBAN</header>
-
         <div id="Project-header">
-          <div id="projectTitle">Personal Life</div>
-          <button id="newTask" type="button" onClick={this.addTask}>+ NEW TASK</button>
+          <div id="projectTitle">Board Name</div>
+          {/* <button id="newTask" type="button" onClick={this.addTask}>+ NEW TASK</button> */}
         </div>
 
-        {/* Components for columns */}
-        <div className="Components">
-          <Queue tasks={this.state.tasks} />
-          <InProgress tasks={this.state.tasks} />
-          <Done tasks={this.state.tasks} />
-        </div>
-
-        {/* New Task */}
-        {/* <TaskForm addTask={this.addTask} /> */}
-        <br />
         {/* Routing Links and Routes */}
         <Router>
           <div>
-            <div>
-              <Link to="/home">Home </Link>
-              <Link to="/boards"> Your Boards </Link>
+            <div id="Nav-header">
+              <Link to="/home">
+                <button id="homeBtn" type="button">Home</button>
+              </Link>
+
+              <Link to="/boards">
+                <button id="BoardsBtn" type="button">Your Boards</button>
+              </Link>
+
               <Link to="/new-task">
                 <button id="newTask" type="button" onClick={this.addTask}>+ NEW TASK</button>
               </Link>
 
               <Route path="/home" component={Home} />
-              <Route path="/boards" component={Boards} />
+              <Route path="/boards" component={() => <Boards tasks={this.state.tasks} />} />
               <Route path="/new-task" component={() => <TaskForm addTask={this.addTask} />} />
             </div>
           </div>
         </Router>
+
+
+
+        {/* Components for columns */}
+        {/* <div className="Components">
+          <Queue tasks={this.state.tasks} />
+          <InProgress tasks={this.state.tasks} />
+          <Done tasks={this.state.tasks} />
+        </div> */}
+
+        {/* New Task */}
+        {/* <TaskForm addTask={this.addTask} /> */}
+        <br />
+
 
 
       </div>
@@ -176,11 +186,11 @@ function Home(props) {
   console.log("Home component goes here");
   return <div>This is HOMEEEEE</div>
 }
-function Boards(props) {
-  console.log("Boards props:", props);
-  console.log("Home component goes here");
-  return <div>This is Boards</div>
-}
+// function Boards(props) {
+//   console.log("Boards props:", props);
+//   console.log("Home component goes here");
+//   return <div>This is Boards</div>
+// }
 
 
 

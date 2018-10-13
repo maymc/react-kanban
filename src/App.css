@@ -1,12 +1,6 @@
 body{
 background-color: white;;
 }
-.App {
-  /* text-align: center; */
-  /* margin: 30px auto; */
-  /* border: 2px red solid; */
-  /* width: 100%; */
-}
 
 .App-header {
   display: flex;
@@ -37,7 +31,7 @@ background-color: white;;
   padding: 5px 0 5px 30px;
 }
 
-button#newTask{
+button#newTask, button#homeBtn, button#BoardsBtn{
   flex: 0 0 auto;
   width: 120px;
   margin: auto 0;

@@ -12,15 +12,18 @@ class Boards extends Component {
   }
 
   render() {
+    console.log("Boards - props:", this.props.tasks);
     return (
-      <div className="App">
-        {/* Components for columns */}
-        <div className="Components" >
-          <Queue tasks={this.state.tasks} />
-          <InProgress tasks={this.state.tasks} />
-          <Done tasks={this.state.tasks} />
-        </div >
-      </div>
+      <Router>
+        <div key={this.props.tasks.id} className="App">
+          {/* Components for columns */}
+          < div className="Components" >
+            <Queue tasks={this.props.tasks} />
+            <InProgress tasks={this.props.tasks} />
+            <Done tasks={this.props.tasks} />
+          </div >
+        </div>
+      </Router>
     )
   }
 }
