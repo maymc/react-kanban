@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "bookshelf": "^0.13.3",
     "connect-redis": "^3.4.0",
@@ -18,8 +19,8 @@
     "react-scripts": "2.0.4"
   },
   "scripts": {
-    "migrate": "POSTGRES_HOSTNAME=localhost POSTGRES_CONTAINER_PORT=8765 npx knex --knexfile ./server/knexfile.js migrate:latest",
-    "seed": "POSTGRES_HOSTNAME=localhost POSTGRES_CONTAINER_PORT=8765 npx knex --knexfile ./server/knexfile.js seed:run",
+    "migrate": "POSTGRES_HOSTNAME=localhost POSTGRES_CONTAINER_PORT=5432 npx knex --knexfile ./server/knexfile.js migrate:latest",
+    "seed": "POSTGRES_HOSTNAME=localhost POSTGRES_CONTAINER_PORT=5432 npx knex --knexfile ./server/knexfile.js seed:run",
     "start": "react-scripts start & npx nodemon ./server/server.js ",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

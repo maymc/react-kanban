@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// eslint-disable-next-line
-import { getItemsFromFakeXHR, addItemToFakeXHR, deleteItemByIdFromFakeXHR } from './db/tasks.db.js';
+import axios from 'axios';
 
 //Import JSX component files
 import Queue from './components/queue/Queue.jsx';
 import InProgress from './components/inProgress/InProgress.jsx';
 import Done from './components/done/Done.jsx';
 import TaskForm from './components/form/TaskForm.jsx';
-// import Boards from './components/boards/Boards.jsx';
-// import Card from './components/card/Card.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -75,20 +72,24 @@ class App extends Component {
           assignedTo: "Bob"
         },
       ]
-
-      // this.addTask = this.addTask.bind(this);
     }
   }
 
   //~~~~~~ Lifecycle Methods ~~~~~~~~//
 
-  //Mounting = setup resource
-  //Unmounting = remove/free resource
-
-  //Runs after the component output has been rendered to DOM
+  //Mounting = setup resource, Runs after the component output has been rendered to DOM
   componentDidMount() {
-    //execute something when component mounts
-    //do xhr request
+    //get request from front end to /tasks that is calling a route from backend that should send all the tasks data, don't need host name because from same origin. Console.log to check that you got data from backend. Inspect on the browser since this is front-end
+    axios
+      .get('/tasks')
+      .then(tasks => {
+        console.log("Axios - tasks:", tasks)
+        //grab data from backend and set it to your application state
+        this.setState({ tasks: tasks.data })
+      })
+      .catch(err => {
+        console.log("Error w/axios get/tasks:", err)
+      })
   }
 
 
@@ -105,6 +106,14 @@ class App extends Component {
       //You have a tasks field and array, takes everything from old task array and adds one more task
       return { tasks: [...state.tasks, task] }
     })
+
+    //For this in axios, you call the request and your backend sends you the new state of your new items and then you set state again. You set state again when adding an item so your UI can cause a reflow and display your new item.
+    // addItemToFakeXHR(item)
+    //   .then(items => {
+    //     if(items) {
+    //       this.setState({items})
+    //     }
+    //   })
   }
 
 
