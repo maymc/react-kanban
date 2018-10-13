@@ -37,7 +37,6 @@ app.post('/new-task', (req, res) => {
   console.log("\ntask:", task);
 
   const newTask = {
-    id: task.id,
     title: task.title,
     body: task.body,
     priority: task.priority,
