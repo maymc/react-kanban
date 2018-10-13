@@ -23,6 +23,11 @@ class Card extends Component {
           <p className="cardStatus">{this.props.tasks.status}</p>
           <p className="cardCreatedBy">{this.props.tasks.createdBy}</p>
           <p className="cardAssignedTo">{this.props.tasks.assignedTo}</p>
+          <br />
+
+          <button id="editBtn" type="button" onClick={this.addTask}>Edit</button>
+
+          <button id="deleteBtn" type="button" onClick={this.addTask}>Delete</button>
         </div>
       </div>
     )

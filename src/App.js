@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 //Import JSX component files
-import Queue from './components/queue/Queue.jsx';
-import InProgress from './components/inProgress/InProgress.jsx';
-import Done from './components/done/Done.jsx';
+// import Queue from './components/queue/Queue.jsx';
+// import InProgress from './components/inProgress/InProgress.jsx';
+// import Done from './components/done/Done.jsx';
 import TaskForm from './components/form/TaskForm.jsx';
 import Boards from './components/boards/Boards.jsx';
 
@@ -17,62 +17,7 @@ class App extends Component {
     //State is an object, tasks is an array of objects
     //React handles state to do updates
     this.state = {
-      tasks: [
-        {
-          id: 1,
-          title: "Clean room",
-          body: "Donate old clothes and books",
-          priority: "Low",
-          status: "Queue",
-          createdBy: "Bob",
-          assignedTo: "May"
-        },
-        {
-          id: 2,
-          title: "Pay bills",
-          body: "Credit card bills due this month",
-          priority: "High",
-          status: "In Progress",
-          createdBy: "Bill",
-          assignedTo: "Em"
-        },
-        {
-          id: 3,
-          title: "Walk the dog",
-          body: "Twice a day",
-          priority: "Low",
-          status: "Done",
-          createdBy: "Sam",
-          assignedTo: "Sammy"
-        },
-        {
-          id: 4,
-          title: "Go to work",
-          body: "Earn money, don't be homeless",
-          priority: "Medium",
-          status: "In Progress",
-          createdBy: "Paul",
-          assignedTo: "May"
-        },
-        {
-          id: 5,
-          title: "Schedule dentist appointment",
-          body: "Annual cleaning",
-          priority: "Medium",
-          status: "Queue",
-          createdBy: "George",
-          assignedTo: "May"
-        },
-        {
-          id: 6,
-          title: "Feed the dog",
-          body: "k9 brand",
-          priority: "Medium",
-          status: "Queue",
-          createdBy: "Bob",
-          assignedTo: "Bob"
-        },
-      ]
+      tasks: []
     }
   }
 
@@ -117,6 +62,14 @@ class App extends Component {
     //   })
   }
 
+  editTask = (task) => {
+    console.log("---> Editing task", task);
+  }
+
+  deleteTask = (task) => {
+    console.log("---> Deleting task", task);
+  }
+
 
   //~~~~~~ App Component - RENDER ~~~~~~~~//
 
@@ -153,26 +106,11 @@ class App extends Component {
               </Link>
 
               <Route path="/home" component={Home} />
-              <Route path="/boards" component={() => <Boards tasks={this.state.tasks} />} />
+              <Route path="/boards" component={() => <Boards tasks={this.state.tasks} editTask={this.editTask} deleteTask={this.deleteTask} />} />
               <Route path="/new-task" component={() => <TaskForm addTask={this.addTask} />} />
             </div>
           </div>
         </Router>
-
-
-
-        {/* Components for columns */}
-        {/* <div className="Components">
-          <Queue tasks={this.state.tasks} />
-          <InProgress tasks={this.state.tasks} />
-          <Done tasks={this.state.tasks} />
-        </div> */}
-
-        {/* New Task */}
-        {/* <TaskForm addTask={this.addTask} /> */}
-        <br />
-
-
 
       </div>
     )
@@ -186,12 +124,6 @@ function Home(props) {
   console.log("Home component goes here");
   return <div>This is HOMEEEEE</div>
 }
-// function Boards(props) {
-//   console.log("Boards props:", props);
-//   console.log("Home component goes here");
-//   return <div>This is Boards</div>
-// }
-
 
 
 //Controlled form - let React maintain data of form b/c form elements in HTML has their own functionality behind the scenes. Browser engine handles the form however you declare it. Want to code it so that React component handles form data and stores the form data in the state.

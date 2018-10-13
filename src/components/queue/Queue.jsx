@@ -54,6 +54,9 @@ function Card(props) {
         {/* <p className="cardStatus">Status: {task.status}</p> */}
         <p className="cardCreatedBy">Created By: {task.createdBy}</p>
         <p className="cardAssignedTo">{task.assignedTo}</p>
+
+        <button id="editBtn" type="button" onClick={task.editTask}>Edit</button>
+        <button id="deleteBtn" type="button" onClick={task.deleteTask}>Delete</button>
       </div>
     </div>);
 }

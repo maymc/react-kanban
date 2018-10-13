@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("HELLLOOOO");
+  // res.render('../App.js');
 })
 
 app.get('/tasks', (req, res) => {
