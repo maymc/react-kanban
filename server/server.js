@@ -66,7 +66,35 @@ app.post('/newTask', (req, res) => {
 
 
 //PUT
-app.put("/editTask", (req, res) => {
+app.put("/editTask/:id", (req, res) => {
+  console.log("---> Backend PUT /editTask");
+  console.log("\nBackend - PUT req.params:", req.params);
+  console.log("\nBackend - PUT req.body:", req.body);
+
+  const { id } = req.params;
+  console.log("\n Check id:", id);
+
+  const updatedTask = {
+    title: req.body.title,
+    body: "add a body later",
+    priority: req.body.priority,
+    status: req.body.status,
+    createdBy: req.body.createdBy,
+    assignedTo: req.body.assignedTo
+  }
+
+  Tasks
+    .where('id', id)
+    .fetch()
+    .then(results => {
+      console.log("\nBackend - PUT results:", results);
+      results.save(updatedTask);
+      res.json("success!!!!!!!");
+    })
+    .catch(err => {
+      console.log("Backend PUT didn't work");
+      res.json("FAILED");
+    })
 
 })
 

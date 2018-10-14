@@ -42,14 +42,7 @@ class App extends Component {
 
   //Function to create a new task
   addTask = (taskFromTaskForm) => {
-    // console.log("Adding new task!", task);
-
-    // //Creates new task/whole new object, creates and returns a new state
-    // this.setState(state => {
-    //   //You have a tasks field and array, takes everything from old task array and adds one more task
-    //   return { tasks: [...state.tasks, task] }
-    // })
-
+    //For this in axios, you call the request and your backend sends you the new state of your new items and then you set state again. You set state again when adding an item so your UI can cause a reflow and display your new item.
     console.log("\nAxios - Adding new task:", taskFromTaskForm);
     axios
       .post('/newTask', taskFromTaskForm)
@@ -60,17 +53,6 @@ class App extends Component {
       .catch(err => {
         console.log("Error w/axios POST/newTask:", err);
       })
-
-
-    //For this in axios, you call the request and your backend sends you the new state of your new items and then you set state again. You set state again when adding an item so your UI can cause a reflow and display your new item.
-    // addItemToFakeXHR(item)
-    //   .then(items => {
-    //     if(items) {
-    //       this.setState({items})
-    //     }
-    //   })
-
-
   }
 
   editTask = (task) => {
