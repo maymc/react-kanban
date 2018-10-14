@@ -12,11 +12,9 @@ const Tasks = require('./db/models/tasks_table.js');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("HELLLOOOO");
-  // res.render('../App.js');
-})
+//Routes
 
+//GET
 app.get('/tasks', (req, res) => {
   console.log("--> Backend GET /tasks");
   Tasks
@@ -29,8 +27,9 @@ app.get('/tasks', (req, res) => {
     })
 })
 
-app.post('/new-task', (req, res) => {
-  console.log("---> Backend POST /new-task");
+//POST
+app.post('/newTask', (req, res) => {
+  console.log("---> Backend POST /newTask");
   console.log("\nreq.body:", req.body);
 
   const task = req.body;
@@ -50,14 +49,25 @@ app.post('/new-task', (req, res) => {
   Tasks
     .forge(newTask)
     .save()
-    .then(() => {
-      res.redirect('/boards');
+    .then((tasks) => {
+      return Tasks
+        .fetchAll()
     })
+    .then()
     .catch(err => {
       console.log('POST - adding task error', err)
     });
 })
 
+//PUT
+app.put("/editTask", (req, res) => {
+
+})
+
+//DELETE
+app.delete("/deleteTask", (req, res) => {
+
+})
 
 
 

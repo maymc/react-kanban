@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
 import Queue from '../queue/Queue.jsx';
 import InProgress from '../inProgress/InProgress.jsx';
 import Done from '../done/Done.jsx';

@@ -4,9 +4,6 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 //Import JSX component files
-// import Queue from './components/queue/Queue.jsx';
-// import InProgress from './components/inProgress/InProgress.jsx';
-// import Done from './components/done/Done.jsx';
 import TaskForm from './components/form/TaskForm.jsx';
 import Boards from './components/boards/Boards.jsx';
 
@@ -14,8 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    //State is an object, tasks is an array of objects
-    //React handles state to do updates
+    //State is an object, tasks is an array of objects, React handles state to do updates
     this.state = {
       tasks: []
     }
@@ -24,6 +20,7 @@ class App extends Component {
   //~~~~~~ Lifecycle Methods ~~~~~~~~//
 
   //Mounting = setup resource, Runs after the component output has been rendered to DOM
+  //this happens immediately when your app starts, this is a react function that you define.
   componentDidMount() {
     //get request from front end to /tasks that is calling a route from backend that should send all the tasks data, don't need host name because from same origin. Console.log to check that you got data from backend. Inspect on the browser since this is front-end
     axios
@@ -86,28 +83,33 @@ class App extends Component {
         <header className="App-header">KANBAN</header>
         <div id="Project-header">
           <div id="projectTitle">Board Name</div>
-          {/* <button id="newTask" type="button" onClick={this.addTask}>+ NEW TASK</button> */}
         </div>
 
         {/* Routing Links and Routes */}
         <Router>
           <div>
             <div id="Nav-header">
-              <Link to="/home">
-                <button id="homeBtn" type="button">Home</button>
-              </Link>
+              <div id="nav-bar">
+                {/* Links */}
+                <Link to="/home">
+                  <button id="homeBtn" type="button">Home</button>
+                </Link>
 
-              <Link to="/boards">
-                <button id="BoardsBtn" type="button">Your Boards</button>
-              </Link>
+                <Link to="/boards">
+                  <button id="BoardsBtn" type="button">Your Boards</button>
+                </Link>
 
-              <Link to="/new-task">
-                <button id="newTask" type="button" onClick={this.addTask}>+ NEW TASK</button>
-              </Link>
+                <Link to="/newTask">
+                  <button id="newTask" type="button" onClick={this.addTask}>+ NEW TASK</button>
+                </Link>
 
-              <Route path="/home" component={Home} />
-              <Route path="/boards" component={() => <Boards tasks={this.state.tasks} editTask={this.editTask} deleteTask={this.deleteTask} />} />
-              <Route path="/new-task" component={() => <TaskForm addTask={this.addTask} />} />
+                {/* Routes */}
+                <Route path="/home" component={Home} />
+
+                <Route path="/boards" component={() => <Boards tasks={this.state.tasks} editTask={this.editTask} deleteTask={this.deleteTask} />} />
+
+                <Route path="/newTask" component={() => <TaskForm addTask={this.addTask} />} />
+              </div>
             </div>
           </div>
         </Router>
@@ -120,12 +122,10 @@ class App extends Component {
 export default App;
 
 function Home(props) {
-  console.log("Home props:", props);
-  console.log("Home component goes here");
+  console.log("\nRendering Home - Home props:", props);
   return (
     <div id="Home-header">
       <div id="welcomeMsg">Welcome to your Kanban!</div>
-
     </div>
 
   )

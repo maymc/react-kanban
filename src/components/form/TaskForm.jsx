@@ -58,8 +58,6 @@ class TaskForm extends Component {
 
   render() {
     return (
-      // <div class="form-popup" id="taskForm">
-      // <form action="/action_page.php" class="form-container">
       <form onSubmit={this.handleSubmit}>
         <label>Title:<br />
           <input onChange={this.handleChange} type="text" name="title" placeholder="Enter title..." />
@@ -93,9 +91,8 @@ class TaskForm extends Component {
         </label>
 
         <button type="submit" className="btn">Submit</button>
-        {/* <button type="button" class="btn cancel" onclick="closeForm()">Close</button> */}
+
       </form>
-      // </div>
     )
   }
 }
