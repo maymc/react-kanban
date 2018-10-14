@@ -39,7 +39,7 @@ app.post('/newTask', (req, res) => {
 
   const newTask = {
     title: task.title,
-    body: "hello",
+    body: "add a body later",
     priority: task.priority,
     status: task.status,
     createdBy: task.createdBy,

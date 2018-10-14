@@ -50,14 +50,12 @@ class App extends Component {
     //   return { tasks: [...state.tasks, task] }
     // })
 
-    console.log("Axios - Adding new task:", taskFromTaskForm);
+    console.log("\nAxios - Adding new task:", taskFromTaskForm);
     axios
       .post('/newTask', taskFromTaskForm)
-      .then((data) => {
-        console.log("data:", data);
-        // this.setState(state => {
-        //   return { tasks: [...state.tasks, taskFromTaskForm] }
-        // })
+      .then((serverData) => {
+        console.log("\nserverData.data:", serverData.data);
+        this.setState({ tasks: serverData.data })
       })
       .catch(err => {
         console.log("Error w/axios POST/newTask:", err);
