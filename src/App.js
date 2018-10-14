@@ -1,3 +1,5 @@
+//CLIENT SIDE
+
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -19,19 +21,18 @@ class App extends Component {
 
   //~~~~~~ Lifecycle Methods ~~~~~~~~//
 
-  //Mounting = setup resource, Runs after the component output has been rendered to DOM
-  //this happens immediately when your app starts, this is a react function that you define.
+  //Mounting = setup resource, Runs after the component output has been rendered to DOM, this happens immediately when your app starts, this is a react function that you define.
   componentDidMount() {
     //get request from front end to /tasks that is calling a route from backend that should send all the tasks data, don't need host name because from same origin. Console.log to check that you got data from backend. Inspect on the browser since this is front-end
     axios
       .get('/tasks')
-      .then(tasks => {
-        console.log("Axios - tasks:", tasks)
+      .then(tasksFromServer => {
+        console.log("Axios - tasks:", tasksFromServer)
         //grab data from backend and set it to your application state
-        this.setState({ tasks: tasks.data })
+        this.setState({ tasks: tasksFromServer.data })
       })
       .catch(err => {
-        console.log("Error w/axios get/tasks:", err)
+        console.log("Error w/axios GET/tasks:", err)
       })
   }
 
@@ -40,15 +41,28 @@ class App extends Component {
   //Never mutate 'state' directly, use 'this.setState' to update the 'state', include what you want to update inside
 
   //Function to create a new task
-  addTask = (task) => {
-    console.log("Adding new task!", task);
+  addTask = (taskFromTaskForm) => {
+    // console.log("Adding new task!", task);
 
-    //Creates new task, returns a new state
-    //Creates a whole new object and creates a new state 
-    this.setState(state => {
-      //You have a tasks field and array, takes everything from old task array and adds one more task
-      return { tasks: [...state.tasks, task] }
-    })
+    // //Creates new task/whole new object, creates and returns a new state
+    // this.setState(state => {
+    //   //You have a tasks field and array, takes everything from old task array and adds one more task
+    //   return { tasks: [...state.tasks, task] }
+    // })
+
+    console.log("Axios - Adding new task:", taskFromTaskForm);
+    axios
+      .post('/newTask', taskFromTaskForm)
+      .then((data) => {
+        console.log("data:", data);
+        // this.setState(state => {
+        //   return { tasks: [...state.tasks, taskFromTaskForm] }
+        // })
+      })
+      .catch(err => {
+        console.log("Error w/axios POST/newTask:", err);
+      })
+
 
     //For this in axios, you call the request and your backend sends you the new state of your new items and then you set state again. You set state again when adding an item so your UI can cause a reflow and display your new item.
     // addItemToFakeXHR(item)
@@ -57,6 +71,8 @@ class App extends Component {
     //       this.setState({items})
     //     }
     //   })
+
+
   }
 
   editTask = (task) => {
@@ -100,7 +116,7 @@ class App extends Component {
                 </Link>
 
                 <Link to="/newTask">
-                  <button id="newTask" type="button" onClick={this.addTask}>+ NEW TASK</button>
+                  <button id="newTask" type="button">+ NEW TASK</button>
                 </Link>
 
                 {/* Routes */}

@@ -1,3 +1,5 @@
+//SERVER SIDE
+
 const express = require("express");
 const app = express();
 const PORT = process.env.EXPRESS_CONTAINER_PORT || 7777;
@@ -14,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
 
-//GET
+//GET /tasks - get all tasks in Tasks table in the DB and send requested data back to client
 app.get('/tasks', (req, res) => {
   console.log("--> Backend GET /tasks");
   Tasks
@@ -37,7 +39,7 @@ app.post('/newTask', (req, res) => {
 
   const newTask = {
     title: task.title,
-    body: task.body,
+    body: "hello",
     priority: task.priority,
     status: task.status,
     createdBy: task.createdBy,
@@ -49,15 +51,19 @@ app.post('/newTask', (req, res) => {
   Tasks
     .forge(newTask)
     .save()
-    .then((tasks) => {
+    .then(() => {
       return Tasks
         .fetchAll()
+        .then(tasks => {
+          res.json(tasks.serialize());
+        })
     })
-    .then()
     .catch(err => {
-      console.log('POST - adding task error', err)
+      console.log('POST - adding task error', err);
+      res.json("NO WORKING");
     });
 })
+
 
 //PUT
 app.put("/editTask", (req, res) => {
