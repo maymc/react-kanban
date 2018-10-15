@@ -16,7 +16,7 @@ class Boards extends Component {
         <div key={this.props.tasks.id} className="App">
           {/* Components for columns */}
           < div className="Components" >
-            <Queue tasks={this.props.tasks} />
+            <Queue tasks={this.props.tasks} editTask={this.props.editTask} />
             <InProgress tasks={this.props.tasks} />
             <Done tasks={this.props.tasks} />
           </div >

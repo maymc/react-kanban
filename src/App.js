@@ -55,8 +55,16 @@ class App extends Component {
       })
   }
 
-  editTask = (task) => {
-    console.log("---> Editing task", task);
+  editTask = (taskFromEditForm) => {
+    console.log("---> Editing task", taskFromEditForm);
+    axios
+      .put("/editTask/:id", taskFromEditForm)
+      .then(() => {
+
+      })
+      .catch(err => {
+        console.log("Error w/axios PUT/editTask/:id:", err);
+      })
   }
 
   deleteTask = (task) => {
@@ -102,7 +110,7 @@ class App extends Component {
                 {/* Routes */}
                 <Route path="/home" component={Home} />
 
-                <Route path="/boards" component={() => <Boards tasks={this.state.tasks} editTask={this.editTask} deleteTask={this.deleteTask} />} />
+                <Route path="/boards" component={() => <Boards tasks={this.state.tasks} editTask={this.editTask} />} />
 
                 <Route path="/newTask" component={() => <TaskForm addTask={this.addTask} />} />
               </div>

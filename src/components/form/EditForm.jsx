@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 
-class TaskForm extends Component {
+class EditForm extends Component {
 
   constructor(props) {
     super(props);
     this.states = {
-      title: null,
-      body: null,
-      priority: null,
-      status: null,
-      createdBy: null,
-      assignedTo: null
+      title: props.title,
+      priority: props.priority,
+      status: props.status,
+      createdBy: props.createdBy,
+      assignedTo: props.assignedTo
     }
   }
 
@@ -25,7 +24,7 @@ class TaskForm extends Component {
   handleSubmit = (e) => {
     console.log("handleSubmit this.props:", this.props);
     e.preventDefault();
-    console.log('\n Submitted!!:', this.state);
+    console.log('\n Updated!!:', this.state);
     this.props.addTask(this.state);
   }
 
@@ -33,11 +32,7 @@ class TaskForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Title:<br />
-          <input onChange={this.handleChange} type="text" name="title" placeholder="Enter title..." />
-        </label>
-        <br /><br />
-        <label>Body:<br />
-          <input onChange={this.handleChange} type="text" name="body" placeholder="Enter body..." />
+          <input onChange={this.handleChange} type="text" name="title" placeholder="WORKING??" />
         </label>
         <br /><br />
         <label>Priority:<br />
@@ -74,4 +69,4 @@ class TaskForm extends Component {
   }
 }
 
-export default TaskForm;
+export default EditForm;
