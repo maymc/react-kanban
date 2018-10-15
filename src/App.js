@@ -58,7 +58,7 @@ class App extends Component {
   editTask = (taskFromEditForm) => {
     console.log("---> Editing task", taskFromEditForm);
     axios
-      .put("/editTask/:id", taskFromEditForm)
+      .put("/editTask", taskFromEditForm)
       .then(() => {
 
       })

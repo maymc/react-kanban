@@ -6,6 +6,7 @@ class EditForm extends Component {
     super(props);
     this.states = {
       title: props.title,
+      body: props.body,
       priority: props.priority,
       status: props.status,
       createdBy: props.createdBy,
@@ -22,47 +23,51 @@ class EditForm extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log("handleSubmit this.props:", this.props);
+    console.log("handleSubmit - EDIT - this.props:", this.props.task);
     e.preventDefault();
     console.log('\n Updated!!:', this.state);
-    this.props.addTask(this.state);
+    this.props.editTask(this.state);
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Title:<br />
-          <input onChange={this.handleChange} type="text" name="title" placeholder="WORKING??" />
+      <form className="editForm" onSubmit={this.handleSubmit}>
+        <label className="editLabel">Title:<br />
+          <input className="editInput" onChange={this.handleChange} type="text" name="title" placeholder={this.props.task.title} />
         </label>
-        <br /><br />
-        <label>Priority:<br />
-          <select onChange={this.handleChange} name="priority">
-            <option>Select Priority...</option>
+        <br />
+        <label className="editLabel">Body:<br />
+          <input className="editInput" onChange={this.handleChange} type="text" name="body" placeholder={this.props.task.body} />
+        </label>
+        <br />
+        <label className="editLabel">Priority:<br />
+          <select className="editSelect" onChange={this.handleChange} name="priority">
+            <option>{this.props.task.priority}</option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
             <option value="Blocker">Blocker</option>
           </select>
         </label>
-        <br /><br />
-        <label>Status:<br />
-          <select onChange={this.handleChange} name="status">
-            <option>Select Status...</option>
+        <br />
+        <label className="editLabel">Status:<br />
+          <select className="editSelect" onChange={this.handleChange} name="status">
+            <option>{this.props.task.status}</option>
             <option value="Queue">Queue</option>
             <option value="In Progress">In Progress</option>
             <option value="Done">Done</option>
           </select>
         </label>
-        <br /><br />
-        <label>Created By:<br />
-          <input onChange={this.handleChange} type="text" name="createdBy" placeholder="Enter Creator..." />
+        <br />
+        <label className="editLabel">Created By:<br />
+          <input className="editInput" onChange={this.handleChange} type="text" name="createdBy" placeholder={this.props.task.createdBy} />
         </label>
-        <br /><br />
-        <label>Assigned To:<br />
-          <input onChange={this.handleChange} type="text" name="assignedTo" placeholder="Assign task to someone..." />
+        <br />
+        <label className="editLabel">Assigned To:<br />
+          <input className="editInput" onChange={this.handleChange} type="text" name="assignedTo" placeholder={this.props.task.assignedTo} />
         </label>
 
-        <button type="submit" className="btn">Submit</button>
+        <button className="editSubmitBtn" type="submit" >Update!</button>
 
       </form>
     )

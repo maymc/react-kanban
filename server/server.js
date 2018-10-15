@@ -39,7 +39,7 @@ app.post('/newTask', (req, res) => {
 
   const newTask = {
     title: task.title,
-    body: "add a body later",
+    body: task.req.body,
     priority: task.priority,
     status: task.status,
     createdBy: task.createdBy,
@@ -66,7 +66,7 @@ app.post('/newTask', (req, res) => {
 
 
 //PUT
-app.put("/editTask/:id", (req, res) => {
+app.put("/editTask", (req, res) => {
   console.log("---> Backend PUT /editTask");
   console.log("\nBackend - PUT req.params:", req.params);
   console.log("\nBackend - PUT req.body:", req.body);
@@ -76,7 +76,7 @@ app.put("/editTask/:id", (req, res) => {
 
   const updatedTask = {
     title: req.body.title,
-    body: "add a body later",
+    body: req.body.body,
     priority: req.body.priority,
     status: req.body.status,
     createdBy: req.body.createdBy,
@@ -84,7 +84,7 @@ app.put("/editTask/:id", (req, res) => {
   }
 
   Tasks
-    .where('id', id)
+    .where('id', req.body.id)
     .fetch()
     .then(results => {
       console.log("\nBackend - PUT results:", results);

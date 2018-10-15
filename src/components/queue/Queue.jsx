@@ -34,13 +34,14 @@ class Queue extends Component {
           <h1 className="columnTitle" id="queueTitle">Queue</h1>
         </div>
 
-        <Card tasks={queueTasks} />
+        <Card tasks={queueTasks} editTask={this.props.editTask} />
       </div>
     )
   }
 }
 
 function Card(props) {
+  // console.log("gimme edit function???:", props.editTask);
   return props.tasks.map(task =>
     <div key={task.id} className="QueueCard">
       <div className="cardInfo">
@@ -61,7 +62,7 @@ function Card(props) {
               <button id="Task" type="button">Delete Task</button>
             </Link> */}
 
-            <Route path="/editTask" component={() => <EditForm editTask={props.editTask} />} />
+            <Route path="/editTask" component={() => <EditForm task={task} editTask={props.editTask} key={task.id} />} />
 
             {/* <Route path="/deleteTask" component={() => <EditForm editTask={props.deleteTask} />} /> */}
           </div>

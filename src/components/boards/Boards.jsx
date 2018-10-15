@@ -11,6 +11,7 @@ class Boards extends Component {
 
   render() {
     console.log("Boards - props:", this.props.tasks);
+    console.log("gimme function:", this.props.editTask);
     return (
       <Router>
         <div key={this.props.tasks.id} className="App">
