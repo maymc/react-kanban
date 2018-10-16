@@ -11,12 +11,12 @@ class Queue extends Component {
 
   //Function to filter out Queue tasks
   QueueTasks(props) {
-    console.log("\n->Queue-All Tasks:", props.tasks);
+    // console.log("\n->Queue-All Tasks:", props.tasks);
     let filteredQueueTasks = props.tasks.filter(element => {
       return element.status === "Queue";
     });
 
-    console.log("filteredQueueTasks:", filteredQueueTasks);
+    // console.log("filteredQueueTasks:", filteredQueueTasks);
     return filteredQueueTasks;
   }
 
@@ -31,7 +31,7 @@ class Queue extends Component {
     return (
       <div className="componentColumn">
         <div id="Queue-header">
-          <h1 className="columnTitle" id="queueTitle">Queue</h1>
+          <h1 className="columnTitle" id="queueTitle">To-Do</h1>
         </div>
 
         <Card tasks={queueTasks} editTask={this.props.editTask} />

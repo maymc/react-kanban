@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-//import Card from '../card/Card.jsx';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import EditForm from '../form/EditForm';
 
 //Configurable component
 class InProgress extends Component {
@@ -10,12 +11,12 @@ class InProgress extends Component {
 
   //Function to filter out In Progress tasks
   InProgressTasks(props) {
-    console.log("\n->In Progress-All Tasks:", props.tasks);
+    // console.log("\n->In Progress-All Tasks:", props.tasks);
     let filteredInProgTasks = props.tasks.filter(element => {
       return element.status === "In Progress";
     });
 
-    console.log("filteredInProgTasks:", filteredInProgTasks);
+    // console.log("filteredInProgTasks:", filteredInProgTasks);
     return filteredInProgTasks;
   }
 
@@ -32,7 +33,7 @@ class InProgress extends Component {
           <h1 className="columnTitle" id="inProgressTitle">In Progress</h1>
         </div>
 
-        <Card tasks={inProgTasks} />
+        <Card tasks={inProgTasks} editTask={this.props.editTask} />
 
       </div>
     )
@@ -43,19 +44,29 @@ function Card(props) {
   return props.tasks.map(task =>
     <div key={task.id} className="InProgCard">
       <div className="cardInfo">
-        {/* <header className="Card-header">
-          <h1 className="columnTitle">Task</h1>
-        </header> */}
         <p className="cardTitle">{task.title}</p>
         <p className="cardBody">{task.body}</p>
         <br />
         <p className="cardPriority">Priority: {task.priority}</p>
-        {/* <p className="cardStatus">Status: {task.status}</p> */}
         <p className="cardCreatedBy">Created By: {task.createdBy}</p>
         <p className="cardAssignedTo">{task.assignedTo}</p>
 
-        <button id="editBtn" type="button">Edit</button>
-        <button id="deleteBtn" type="button">Delete</button>
+        <Router>
+          <div>
+            <Link to="/editTask">
+              <button id="Task" type="button">Edit Task</button>
+            </Link>
+
+            {/* <Link to="/deleteTask">
+              <button id="Task" type="button">Delete Task</button>
+            </Link> */}
+
+            <Route path="/editTask" component={() => <EditForm task={task} editTask={props.editTask} key={task.id} />} />
+
+            {/* <Route path="/deleteTask" component={() => <EditForm editTask={props.deleteTask} />} /> */}
+          </div>
+
+        </Router>
       </div>
     </div>);
 }

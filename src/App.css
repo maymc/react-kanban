@@ -197,7 +197,7 @@ button:hover{
 .editForm {
   margin: 5px 5px;
   padding: 10px;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 15px;
   font-family: 'Oxygen', sans-serif;
   width: 89%;
@@ -213,15 +213,15 @@ input.editInput[type=text], select {
   display: inline-block;
   box-sizing: border-box;
   font-family: 'Oxygen', sans-serif;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .editLabel{
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 select.editSelect{
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 button.editSubmitBtn[type=submit] {
@@ -235,7 +235,7 @@ button.editSubmitBtn[type=submit] {
   cursor: pointer;
   font-family: 'Oxygen', sans-serif;
   font-weight: bold;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 button:hover{
