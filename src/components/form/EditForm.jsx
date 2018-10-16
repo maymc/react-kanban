@@ -5,6 +5,7 @@ class EditForm extends Component {
   constructor(props) {
     super(props);
     this.states = {
+      id: props.id,
       title: props.title,
       body: props.body,
       priority: props.priority,
@@ -18,6 +19,7 @@ class EditForm extends Component {
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
+      id: this.props.task.id,
       [name]: value
     })
   }
@@ -26,12 +28,17 @@ class EditForm extends Component {
     console.log("handleSubmit - EDIT - this.props:", this.props.task);
     e.preventDefault();
     console.log('\n Updated!!:', this.state);
-    this.props.editTask(this.state);
+    console.log('\n Updated id:', this.props.task.id);
+    this.props.editTask(this.state, this.props.task.id);
   }
 
   render() {
     return (
       <form className="editForm" onSubmit={this.handleSubmit}>
+        <label className="editLabel">Task ID:<br />
+          <input className="editInput" type="text" name="title" value={this.props.task.id} readOnly />
+        </label>
+        <br />
         <label className="editLabel">Title:<br />
           <input className="editInput" onChange={this.handleChange} type="text" name="title" placeholder={this.props.task.title} />
         </label>

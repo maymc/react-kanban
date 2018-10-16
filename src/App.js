@@ -46,7 +46,7 @@ class App extends Component {
     console.log("\nAxios - Adding new task:", taskFromTaskForm);
     axios
       .post('/newTask', taskFromTaskForm)
-      .then((serverData) => {
+      .then(serverData => {
         console.log("\nserverData.data:", serverData.data);
         this.setState({ tasks: serverData.data })
       })
@@ -55,15 +55,17 @@ class App extends Component {
       })
   }
 
-  editTask = (taskFromEditForm) => {
-    console.log("---> Editing task", taskFromEditForm);
+  editTask = (taskFromEditForm, id) => {
+    console.log("\n--> Editing task: ", taskFromEditForm);
+    console.log("\n--> Editing task id: ", id);
     axios
       .put("/editTask", taskFromEditForm)
-      .then(() => {
-
+      .then(editServerData => {
+        console.log("\nCheck - editServerData:", editServerData)
+        this.setState({ tasks: editServerData.data })
       })
       .catch(err => {
-        console.log("Error w/axios PUT/editTask/:id:", err);
+        console.log("Error w/axios PUT/editTask:", err);
       })
   }
 

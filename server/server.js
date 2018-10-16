@@ -34,16 +34,13 @@ app.post('/newTask', (req, res) => {
   console.log("---> Backend POST /newTask");
   console.log("\nreq.body:", req.body);
 
-  const task = req.body;
-  console.log("\ntask:", task);
-
   const newTask = {
-    title: task.title,
-    body: task.req.body,
-    priority: task.priority,
-    status: task.status,
-    createdBy: task.createdBy,
-    assignedTo: task.assignedTo
+    title: req.body.title,
+    body: req.body.body,
+    priority: req.body.priority,
+    status: req.body.status,
+    createdBy: req.body.createdBy,
+    assignedTo: req.body.assignedTo
   };
 
   console.log("\nNew task check:", newTask);
@@ -66,13 +63,13 @@ app.post('/newTask', (req, res) => {
 
 
 //PUT
-app.put("/editTask", (req, res) => {
-  console.log("---> Backend PUT /editTask");
-  console.log("\nBackend - PUT req.params:", req.params);
+app.put("/editTask/", (req, res) => {
+  console.log("\n---> Backend PUT /editTask");
+  // console.log("\nBackend - PUT req.params:", req.params);
   console.log("\nBackend - PUT req.body:", req.body);
 
-  const { id } = req.params;
-  console.log("\n Check id:", id);
+  // const { id } = req.params;
+  // console.log("\n Check id:", id);
 
   const updatedTask = {
     title: req.body.title,
@@ -89,7 +86,11 @@ app.put("/editTask", (req, res) => {
     .then(results => {
       console.log("\nBackend - PUT results:", results);
       results.save(updatedTask);
-      res.json("success!!!!!!!");
+      return Tasks
+        .fetchAll()
+        .then(tasks => {
+          res.json(tasks.serialize());
+        })
     })
     .catch(err => {
       console.log("Backend PUT didn't work");

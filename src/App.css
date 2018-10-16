@@ -56,8 +56,8 @@ button#newTask, button#homeBtn, button#BoardsBtn{
 
 .componentColumn{
   width: 32%;
-  height: 700px;
-  margin: auto;
+  height: 100%;
+  margin: 0 auto;
   border: 1.5px black solid;
   background-color: white;
   border-radius: 10px;
