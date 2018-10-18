@@ -49,11 +49,10 @@ app.post('/newTask', (req, res) => {
     .forge(newTask)
     .save()
     .then(() => {
-      return Tasks
-        .fetchAll()
-        .then(tasks => {
-          res.json(tasks.serialize());
-        })
+      return Tasks.fetchAll()
+    })
+    .then(tasks => {
+      res.json(tasks.serialize());
     })
     .catch(err => {
       console.log('POST - adding task error', err);
@@ -86,11 +85,10 @@ app.put("/editTask/", (req, res) => {
     .then(results => {
       console.log("\nBackend - PUT results:", results);
       results.save(updatedTask);
-      return Tasks
-        .fetchAll()
-        .then(tasks => {
-          res.json(tasks.serialize());
-        })
+      return Tasks.fetchAll()
+    })
+    .then(tasks => {
+      res.json(tasks.serialize());
     })
     .catch(err => {
       console.log("Backend PUT didn't work");

@@ -4,8 +4,6 @@ import Queue from '../queue/Queue.jsx';
 import InProgress from '../inProgress/InProgress.jsx';
 import Done from '../done/Done.jsx';
 
-import { connect } from 'react-redux';
-
 class Boards extends Component {
   constructor(props) {
     super(props);

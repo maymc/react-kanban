@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { editTask } from '../../actions/actions.js';
 
 class EditForm extends Component {
 
@@ -29,7 +31,8 @@ class EditForm extends Component {
     e.preventDefault();
     console.log('\n Updated!!:', this.state);
     console.log('\n Updated id:', this.props.task.id);
-    this.props.editTask(this.state, this.props.task.id);
+    // this.props.editTask(this.state, this.props.task.id);
+    this.props.dispatch(editTask(this.state, this.props.task.id));
   }
 
   render() {
@@ -81,4 +84,4 @@ class EditForm extends Component {
   }
 }
 
-export default EditForm;
+export default connect()(EditForm);

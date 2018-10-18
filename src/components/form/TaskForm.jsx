@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { addItem } from '../form/TaskForm.jsx';
 import { connect } from 'react-redux';
-import { addTask } from '../../actions/actions';
+import { addTask } from '../../actions/actions.js';
 
 class TaskForm extends Component {
 
