@@ -9,6 +9,9 @@ import axios from 'axios';
 import TaskForm from './components/form/TaskForm.jsx';
 import Boards from './components/boards/Boards.jsx';
 
+import { connect } from 'react-redux';
+import { getAllTasks } from './actions/actions.js';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,16 +27,22 @@ class App extends Component {
   //Mounting = setup resource, Runs after the component output has been rendered to DOM, this happens immediately when your app starts, this is a react function that you define.
   componentDidMount() {
     //get request from front end to /tasks that is calling a route from backend that should send all the tasks data, don't need host name because from same origin. Console.log to check that you got data from backend. Inspect on the browser since this is front-end
-    axios
-      .get('/tasks')
-      .then(tasksFromServer => {
-        console.log("Axios - tasks:", tasksFromServer)
-        //grab data from backend and set it to your application state
-        this.setState({ tasks: tasksFromServer.data })
-      })
-      .catch(err => {
-        console.log("Error w/axios GET/tasks:", err)
-      })
+    // axios
+    //   .get('/tasks')
+    //   .then(tasksFromServer => {
+    //     console.log("Axios - tasks:", tasksFromServer)
+    //     //grab data from backend and set it to your application state
+    //     this.setState({ tasks: tasksFromServer.data })
+    //   })
+    //   .catch(err => {
+    //     console.log("Error w/axios GET/tasks:", err)
+    //   })
+
+    //Use redux to create initial data and have component render it all over
+    console.log("this.props:", this.props);
+
+    //dispatching a raw object inside dispatch
+    this.props.dispatch(getAllTasks());
   }
 
 
@@ -55,6 +64,7 @@ class App extends Component {
       })
   }
 
+  //Function to edit a task
   editTask = (taskFromEditForm, id) => {
     console.log("\n--> Editing task: ", taskFromEditForm);
     console.log("\n--> Editing task id: ", id);
@@ -72,7 +82,6 @@ class App extends Component {
   deleteTask = (task) => {
     console.log("---> Deleting task", task);
   }
-
 
   //~~~~~~ App Component - RENDER ~~~~~~~~//
 
@@ -113,6 +122,7 @@ class App extends Component {
                 <Route path="/home" component={Home} />
 
                 <Route path="/boards" component={() => <Boards tasks={this.state.tasks} editTask={this.editTask} />} />
+                {/* <Route path="/boards" component={() => <Boards editTask={this.editTask} />} /> */}
 
                 <Route path="/newTask" component={() => <TaskForm addTask={this.addTask} />} />
               </div>
@@ -125,7 +135,8 @@ class App extends Component {
   };
 }
 
-export default App;
+//Something you can throw your component through. Give it some data. Provide access to dispatch method in component. Need to connect component to redux system. Return of connect is a function.
+export default connect()(App);
 
 function Home(props) {
   console.log("\nRendering Home - Home props:", props);

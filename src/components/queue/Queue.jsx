@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import EditForm from '../form/EditForm';
+import { connect } from 'react-redux';
 
 //Configurable component
 class Queue extends Component {
@@ -42,6 +43,7 @@ class Queue extends Component {
 
 function Card(props) {
   // console.log("gimme edit function???:", props.editTask);
+  console.log("props???:", props);
   return props.tasks.map(task =>
     <div key={task.id} className="QueueCard">
       <div className="cardInfo">
@@ -72,4 +74,16 @@ function Card(props) {
     </div>);
 }
 
-export default Queue;
+// Map state to props. Referencing the store state, create a mapping. Redux gives API of how they do it, make available the store state to props
+const mapStateToProps = state => {
+  //array of objects = state
+  console.log("\nstate:", state)
+  return {
+    tasks: state,
+    queueTest: 'testing queue',
+  }
+}
+
+//Executing connect with mapStateToProps where connect will use the function to read from the store and inject it into the properities of the Board app. Connect returns another function that can take in a component
+//Augmenting your component
+export default connect(mapStateToProps)(Queue);

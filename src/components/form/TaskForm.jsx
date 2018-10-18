@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { addItem } from '../form/TaskForm.jsx';
+import { connect } from 'react-redux';
 
 class TaskForm extends Component {
 
@@ -74,4 +76,4 @@ class TaskForm extends Component {
   }
 }
 
-export default TaskForm;
+export default connect()(TaskForm);
