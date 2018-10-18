@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import EditForm from '../form/EditForm';
+import { connect } from 'react-redux';
 
 //Configurable component
 class InProgress extends Component {
@@ -71,4 +72,11 @@ function Card(props) {
     </div>);
 }
 
-export default InProgress;
+const mapStateToProps = state => {
+  console.log("\nInProgress - state:", state);
+  return {
+    tasks: state,
+    inProgressTest: 'testing inProgress',
+  }
+}
+export default connect(mapStateToProps)(InProgress);

@@ -43,7 +43,7 @@ class Queue extends Component {
 
 function Card(props) {
   // console.log("gimme edit function???:", props.editTask);
-  console.log("props???:", props);
+  // console.log("props???:", props);
   return props.tasks.map(task =>
     <div key={task.id} className="QueueCard">
       <div className="cardInfo">
@@ -77,7 +77,7 @@ function Card(props) {
 // Map state to props. Referencing the store state, create a mapping. Redux gives API of how they do it, make available the store state to props
 const mapStateToProps = state => {
   //array of objects = state
-  console.log("\nstate:", state)
+  console.log("\nQueue - state:", state)
   return {
     tasks: state,
     queueTest: 'testing queue',

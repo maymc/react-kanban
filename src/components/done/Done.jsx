@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import EditForm from '../form/EditForm';
+import { connect } from 'react-redux';
 
 //Configurable component
 class Done extends Component {
@@ -71,4 +72,12 @@ function Card(props) {
     </div>);
 }
 
-export default Done;
+const mapStateToProps = state => {
+  console.log("\nDone - state:", state);
+  return {
+    tasks: state,
+    doneTest: 'testing Done',
+  }
+}
+
+export default connect(mapStateToProps)(Done);

@@ -7,10 +7,11 @@ const itemReducer = (state = [], action) => {
   console.log("\nCURRENT STATE:", state);
   switch (action.type) {
     case GET_ALL_TASKS:
-      //action.payload is initial state or array of objects
+      //action.payload data from the backend
       return action.payload;
     case ADD_TASK:
       return [...state, action.payload];
+    // case DISPLAY_ERROR_NOTIFICATION:
     default:
       //default is to return original state to do nothing 
       return state;

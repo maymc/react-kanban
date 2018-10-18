@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { addItem } from '../form/TaskForm.jsx';
 import { connect } from 'react-redux';
+import { addTask } from '../../actions/actions';
 
 class TaskForm extends Component {
 
@@ -28,7 +29,9 @@ class TaskForm extends Component {
     console.log("handleSubmit this.props:", this.props);
     e.preventDefault();
     console.log('\n Submitted!!:', this.state);
-    this.props.addTask(this.state);
+    // this.props.addTask(this.state);
+    //any change to store goes through dispatch store first
+    this.props.dispatch(addTask(this.state));
   }
 
   render() {
