@@ -1,4 +1,4 @@
-import { GET_ALL_TASKS, ADD_TASK, EDIT_TASK } from '../actions/actions.js';
+import { GET_ALL_TASKS, ADD_TASK, EDIT_TASK, DELETE_TASK } from '../actions/actions.js';
 
 //takes in action and current sate, if there is no state then it will be an empty attay
 const itemReducer = (state = [], action) => {
@@ -15,6 +15,9 @@ const itemReducer = (state = [], action) => {
 
     case EDIT_TASK:
       return action.payload;
+
+    case DELETE_TASK:
+      return [...state], action.payload;
 
     // case DISPLAY_ERROR_NOTIFICATION:
     default:

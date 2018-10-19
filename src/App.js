@@ -27,16 +27,6 @@ class App extends Component {
   //Mounting = setup resource, Runs after the component output has been rendered to DOM, this happens immediately when your app starts, this is a react function that you define.
   componentDidMount() {
     //get request from front end to /tasks that is calling a route from backend that should send all the tasks data, don't need host name because from same origin. Console.log to check that you got data from backend. Inspect on the browser since this is front-end
-    // axios
-    //   .get('/tasks')
-    //   .then(tasksFromServer => {
-    //     console.log("Axios - tasks:", tasksFromServer)
-    //     //grab data from backend and set it to your application state
-    //     this.setState({ tasks: tasksFromServer.data })
-    //   })
-    //   .catch(err => {
-    //     console.log("Error w/axios GET/tasks:", err)
-    //   })
 
     //Use redux to create initial data and have component render it all over
     console.log("this.props:", this.props);
@@ -79,8 +69,16 @@ class App extends Component {
       })
   }
 
-  deleteTask = (task) => {
-    console.log("---> Deleting task", task);
+  deleteTask = (taskToDelete, id) => {
+    console.log("\n---> Deleting task", taskToDelete);
+    console.log("\n--> Deleting task id: ", id);
+    axios
+      .put("/deleteTask", taskToDelete)
+      .then(serverDataAfterDelete => {
+        console.log("\nCheck - editServerData:", serverDataAfterDelete)
+        this.setState({ tasks: serverDataAfterDelete.data })
+      })
+      .catch()
   }
 
   //~~~~~~ App Component - RENDER ~~~~~~~~//
@@ -121,7 +119,7 @@ class App extends Component {
                 {/* Routes */}
                 <Route path="/home" component={Home} />
 
-                <Route path="/boards" component={() => <Boards tasks={this.state.tasks} editTask={this.editTask} />} />
+                <Route path="/boards" component={() => <Boards tasks={this.state.tasks} editTask={this.editTask} deleteTask={this.deleteTask} />} />
                 {/* <Route path="/boards" component={() => <Boards editTask={this.editTask} />} /> */}
 
                 <Route path="/newTask" component={() => <TaskForm addTask={this.addTask} />} />

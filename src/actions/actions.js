@@ -4,6 +4,7 @@ import axios from 'axios';
 export const GET_ALL_TASKS = 'GET_ALL_TASKS';
 export const ADD_TASK = 'ADD_TASK';
 export const EDIT_TASK = 'EDIT_TASK';
+export const DELETE_TASK = 'DELETE_TASK';
 
 export const getAllTasks = () => {
   //return a function to dispatch action that will dispatch another action
@@ -45,6 +46,20 @@ export const editTask = (task) => {
       })
       .catch(err => {
         console.log("ERROR - actions editTask:", err);
+      })
+  }
+}
+
+export const deleteTask = (task) => {
+  console.log("\nACTION: deleteTask:", task);
+  return dispatch => {
+    axios.put("/deleteTask", task)
+      .then(responseFromDB => {
+        console.log("\nCheck - response from DB @ delete:", responseFromDB.data)
+        dispatch({ type: DELETE_TASK, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions deleteTask:", err);
       })
   }
 }

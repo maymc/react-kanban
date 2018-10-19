@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import EditForm from '../form/EditForm';
+import DeleteForm from '../form/DeleteForm';
 import { connect } from 'react-redux';
 
 //Configurable component
@@ -34,7 +35,7 @@ class InProgress extends Component {
           <h1 className="columnTitle" id="inProgressTitle">In Progress</h1>
         </div>
 
-        <Card tasks={inProgTasks} editTask={this.props.editTask} />
+        <Card tasks={inProgTasks} editTask={this.props.editTask} deleteTask={this.props.deleteTask} />
 
       </div>
     )
@@ -43,7 +44,7 @@ class InProgress extends Component {
 
 function Card(props) {
   return props.tasks.map(task =>
-    <div key={task.id} className="InProgCard">
+    <div key={task.id} className="InProgCard" onClick={() => console.log("id:", task.id)}>
       <div className="cardInfo">
         <p className="cardTitle">{task.title}</p>
         <p className="cardBody">{task.body}</p>
@@ -58,13 +59,13 @@ function Card(props) {
               <button id="Task" type="button">Edit Task</button>
             </Link>
 
-            {/* <Link to="/deleteTask">
+            <Link to={`/deleteTask/${task.id}`}>
               <button id="Task" type="button">Delete Task</button>
-            </Link> */}
+            </Link>
 
             <Route path="/editTask" component={() => <EditForm task={task} editTask={props.editTask} key={task.id} />} />
 
-            {/* <Route path="/deleteTask" component={() => <EditForm editTask={props.deleteTask} />} /> */}
+            <Route path="/deleteTask/:id" component={() => <DeleteForm task={task} deleteTask={props.deleteTask} key={task.id} />} />
           </div>
 
         </Router>

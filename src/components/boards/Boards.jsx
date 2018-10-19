@@ -17,9 +17,9 @@ class Boards extends Component {
         <div key={this.props.tasks.id} className="App">
           {/* Components for columns */}
           < div className="Components" >
-            <Queue tasks={this.props.tasks} editTask={this.props.editTask} />
-            <InProgress tasks={this.props.tasks} editTask={this.props.editTask} />
-            <Done tasks={this.props.tasks} editTask={this.props.editTask} />
+            <Queue tasks={this.props.tasks} editTask={this.props.editTask} deleteTask={this.props.deleteTask} />
+            <InProgress tasks={this.props.tasks} editTask={this.props.editTask} deleteTask={this.props.deleteTask} />
+            <Done tasks={this.props.tasks} editTask={this.props.editTask} deleteTask={this.props.deleteTask} />
           </div >
         </div>
       </Router>

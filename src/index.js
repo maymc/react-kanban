@@ -21,7 +21,7 @@ const store = createStore(
   )
 );
 
-store.dispatch({ type: 'test', payload: 'more tests' });
+store.dispatch({ type: 'index - test', payload: 'more tests' });
 
 
 //Provider is top level application with state. If an action goes to a reducer, reducer returns a new state, sets state inside provider and then propagates everything downwards

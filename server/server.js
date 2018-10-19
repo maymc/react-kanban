@@ -62,7 +62,7 @@ app.post('/newTask', (req, res) => {
 
 
 //PUT
-app.put("/editTask/", (req, res) => {
+app.put("/editTask", (req, res) => {
   console.log("\n---> Backend PUT /editTask");
   // console.log("\nBackend - PUT req.params:", req.params);
   console.log("\nBackend - PUT req.body:", req.body);
@@ -98,8 +98,22 @@ app.put("/editTask/", (req, res) => {
 })
 
 //DELETE
-app.delete("/deleteTask", (req, res) => {
-
+app.put("/deleteTask", (req, res) => {
+  console.log("\n---> Backend DELETE /deleteTask");
+  console.log("\nBackend - DELETE req.body:", req.body);
+  Tasks
+    .where("id", req.body.id)
+    .destroy()
+    .then(() => {
+      console.log("\nDelete is working!!");
+      return Tasks.fetchAll()
+    })
+    .then(tasks => {
+      res.json(tasks.serialize());
+    })
+    .catch(err => {
+      console.log('error, err');
+    })
 })
 
 

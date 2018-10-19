@@ -241,3 +241,50 @@ button.editSubmitBtn[type=submit] {
 button:hover{
   background-color: rgb(80, 176, 231);
 }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.deleteConfirm{
+  color: red;
+  text-align: center;
+}
+
+.deleteForm {
+  margin: 5px 5px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+  font-family: 'Oxygen', sans-serif;
+  width: 89%;
+  font-weight: bold;
+}
+
+input.deleteInput[type=text], select {
+  margin: 5px;
+  padding: 5px;
+  width: 95%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  box-sizing: border-box;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 0.9em;
+}
+
+.deleteLabel{
+  font-size: 0.9em;
+}
+
+button.deleteSubmitBtn[type=submit] {
+  width: 95%;
+  background-color: rgb(46, 206, 255);
+  color: black;
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Oxygen', sans-serif;
+  font-weight: bold;
+  font-size: 0.9em;
+}
