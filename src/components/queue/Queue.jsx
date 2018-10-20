@@ -44,7 +44,7 @@ class Queue extends Component {
 
 function Card(props) {
   // console.log("gimme edit function???:", props.editTask);
-  console.log("Queue props???:", props);
+  // console.log("Queue props???:", props);
 
   return props.tasks.map(task =>
     <div key={task.id} className="QueueCard" onClick={() => console.log("id @ delete:", task.id)}>

@@ -9,6 +9,7 @@ import axios from 'axios';
 import TaskForm from './components/form/TaskForm.jsx';
 import Boards from './components/boards/Boards.jsx';
 
+//Setup for redux
 import { connect } from 'react-redux';
 import { getAllTasks } from './actions/actions.js';
 
@@ -24,17 +25,18 @@ class App extends Component {
 
   //~~~~~~ Lifecycle Methods ~~~~~~~~//
 
-  //Mounting = setup resource, Runs after the component output has been rendered to DOM, this happens immediately when your app starts, this is a react function that you define.
+  //Mounting = setup resource
+  //Runs after the component output has been rendered to DOM, this happens immediately when your app starts
+  //React function that you define
   componentDidMount() {
-    //get request from front end to /tasks that is calling a route from backend that should send all the tasks data, don't need host name because from same origin. Console.log to check that you got data from backend. Inspect on the browser since this is front-end
+    //GET request from front-end calls route from backend which will send all the 'tasks' data.
+    //Don't need host name because from same origin
 
-    //Use redux to create initial data and have component render it all over
+    //Use redux to create initial data and have component render it
+    //Dispatching a raw object inside dispatch
     console.log("this.props:", this.props);
-
-    //dispatching a raw object inside dispatch
     this.props.dispatch(getAllTasks());
   }
-
 
   //~~~~~~ App Component - Functions ~~~~~~~~//
   //Never mutate 'state' directly, use 'this.setState' to update the 'state', include what you want to update inside
